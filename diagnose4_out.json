@@ -1,0 +1,70 @@
+{
+  "nethasp.ini": "\n;\n; NetHASP Configuration file syntax.\n;\n;\n; Note:\n;\n; All text lines were commented.\n; Remove comments in the lines you want to use.\n;\n\n\n[NH_COMMON]\n\n;\n; Section-specific Keywords\n;\n\n;\n; You can set either of the following two Keywords to \"Enabled\"!\n;\n;;NH_IPX = Enabled or Disabled \t\t; Use the IPX protocol\n;;NH_TCPIP = Enabled or Disabled\t; Use the TCP/IP protocol\n\n;\n; General Keywords\n;\n;;NH_SESSION = <Num>\t\t\t; See Adapting the Timeout Length \n;;NH_SEND_RCV = <Num>\t\t\t; in the HASP Programmer's Guide.\n\n\n\n[NH_IPX]\n\n;\n; Section-specific Keywords for the IPX protocol.\n;\n\n;;NH_USE_BROADCAST = Enabled or Disabled; Use IPX Broadcast mechanism.\n\t\t\t\t\t; Default:  Enabled\n\n;;NH_DATFILE_PATH = <path>\t\t; Specify the location of the NetHASP \n\t\t\t\t\t; License Manager's address file.\n\n;\n; General Keywords\n;\n;;NH_SESSION = <Num>\t\t\t; See Adapting the Timeout Length \n;;NH_SEND_RCV = <Num>\t\t\t; in the HASP Programmer's Guide.\n\n\n\n[NH_TCPIP]\n\n;\n; Section-specific Keywords for the TCP/IP protocol.\n;\n\n;;NH_SERVER_ADDR = <Addr1>, <Addr2> \t; IP addresses of all the NetHASP \n\t\t\t\t\t; License Managers you want to search.\n\t\t\t\t\t; Unlimited addresses and multiple\n\t\t\t\t\t; lines are possible.\n\t\t\t\t\t;\n\t\t\t\t\t; Possible address format examples:\n\t\t\t\t\t;  IP address:      192.114.176.65\n\t\t\t\t\t;  Local Hostname:  ftp.aladdin.co.il\n\nNH_SERVER_ADDR = 127.0.0.1      ; Ensures that HASP LM will be found on local machine\n                                ; (on some systems broadcast is not visible locally)\n\n;;NH_PORT_NUMBER = <Num>\t\t; Set the TCP/IP port number. This is\n\t\t\t\t\t; optional. The default number is 475.\n\n;;NH_USE_BROADCAST = Enabled or Disabled; Use TCPI/IP Broadcast mechanism.\n\t\t\t\t\t; Default:  Enabled\n\n;\n; General Keywords.\n;\n;;NH_SESSION = <Num>\t\t\t; See Adapting the Timeout Length \n;;NH_SEND_RCV = <Num>\t\t\t; in the HASP Programmer's Guide.\n\n",
+  "nhsrv.ini": "\n;*******************************************************************************\n;*\n;* NetHASP License Manager sample configuration file.\n;*\n;*   boolean switches may have the values\n;*     1, yes, true, enabled\n;*     0, no, false, disabled\n;*\n;*******************************************************************************\n\n\n; ------------------------------------------------------------------------------\n; global LM settings\n; ------------------------------------------------------------------------------\n\n[NHS_SERVER]\n\nNHS_USERLIST     = 250           ; maximum number of concurrent logins\n                                 ; to this LM (default=250, max = 65520)\n\n;NHS_SERVERNAMES = cad, test1,   ; server names to match the name a client\n;                  LM017,        ; requests (max 6 names, max 7 chars/name)\n;                  oefibla\n\nNHS_HIGHPRIORITY = no            ; run LM at high priority (default=no)\n\n\n; ------------------------------------------------------------------------------\n; settings for the IP protocol\n; ------------------------------------------------------------------------------\n\n[NHS_IP]\n\nNHS_USE_UDP      = enabled   ; enabled or disabled (default: enabled)\nNHS_USE_TCP      = enabled   ; enabled or disabled (default: enabled)\nNHS_IP_portnum   = 475       ; IP port number (default: 475 (IANA registered))\n                             ;   CAUTION: clients must use the same port !\n\n\n;NHS_IP_LIMIT = 10.24.2.18-99, 10.1.1.9/16,    10.25.0.0/24,\n;               192.0.0.*, 194.0.*.*, 11.*.*.*,\n;               10.24.7.8-12 /30, 10.24.2.17\n; specifies the range of stations that are allowed to access the LM\n; the LAST byte may be a range (e.g., 10-120)\n; the 4th, the 4th and 3rd, or the 4th and 3rd and 2nd byte may be an asterisk,\n;   acting as wildcard (e.g., 10.*.*.*, but NOT 10.*.20.1)\n; an additional bitmask can be specified as number of one-bits (e.g., 10.0.0.0/8)\n\n\n; ------------------------------------------------------------------------------\n; settings for the IPX protocol\n; ------------------------------------------------------------------------------\n\n[NHS_IPX]\n\nNHS_USE_IPX       = enabled  ; enabled or disabled (default: enabled)\n;NHS_addrpath     = c:\\temp  ; pathname for haspaddr.dat (default: current dir)\nNHS_AppendAddr    = no       ; append to haspaddr.dat (default: replace)\nNHS_usesap        = enabled  ; enabled or disabled (default: enabled)\nNHS_ipx_socketnum = 0x7483   ; IPX socket number (default: 0x7483)\n                             ;   CAUTION: clients must use the same number !\n\n\n; ------------------------------------------------------------------------------\n; settings for the NetBios protocol\n; ------------------------------------------------------------------------------\n\n[NHS_NETBIOS]\n\nNHS_USE_NETBIOS   = enabled  ; enabled or disabled (default: enabled)\n;NHS_NBNAME       = MyNBName ; use another than predefined NetBios name\n                             ;   CAUTION: clients must use the same name !\n;NHS_use_lana_nums = 3,0,7,2  ; default = all (automatic)\n\n\n; ------------------------------------------------------------------------------\n; end of file\n; ------------------------------------------------------------------------------\n",
+  "hlmon.dll_exports": {
+    "status": "ok",
+    "exports": [
+      {
+        "name": "mightyfunc",
+        "ordinal": 1,
+        "rva": "0xb6bb"
+      }
+    ]
+  },
+  "hsmon.dll_exports": {
+    "status": "ok",
+    "exports": [
+      {
+        "name": "mightyfunc",
+        "ordinal": 1,
+        "rva": "0x69fb"
+      }
+    ]
+  },
+  "aksmon_ge.dll_exports": {
+    "status": "ok",
+    "exports": []
+  },
+  "nhlminst.dll_exports": {
+    "status": "ok",
+    "exports": [
+      {
+        "name": "HaspLMInfo",
+        "ordinal": 1,
+        "rva": "0x1023"
+      },
+      {
+        "name": "HaspLMInstall",
+        "ordinal": 2,
+        "rva": "0x1028"
+      },
+      {
+        "name": "HaspLMLastError",
+        "ordinal": 3,
+        "rva": "0x1000"
+      },
+      {
+        "name": "HaspLMRemove",
+        "ordinal": 4,
+        "rva": "0x1014"
+      },
+      {
+        "name": "UninstInitialize",
+        "ordinal": 5,
+        "rva": "0x100a"
+      },
+      {
+        "name": "UninstUnInitialize",
+        "ordinal": 6,
+        "rva": "0x101e"
+      }
+    ]
+  },
+  "hlmon.dll_calls": {
+    "mightyfunc": "no_output"
+  },
+  "hsmon.dll_calls": {
+    "mightyfunc": "no_output"
+  },
+  "hls32svc_running": ""
+}

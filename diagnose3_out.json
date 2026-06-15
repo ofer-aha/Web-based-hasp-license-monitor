@@ -1,0 +1,230 @@
+{
+  "sedebug": "ENABLED",
+  "haspaddr_dat": "000000000000000000000000",
+  "hasp_lm_files": {
+    "C:\\Program Files (x86)\\Aladdin\\HASP LM": [
+      "eula.rtf",
+      "lmuninst.exe",
+      "nhsrv.ini",
+      "nhsrvw32.hlp",
+      "readme.txt"
+    ],
+    "C:\\Program Files (x86)\\Aladdin\\Monitor": [
+      "aksmon.exe",
+      "aksmon_en.hlp",
+      "aksmon_ge.dll",
+      "aksmon_ge.hlp",
+      "BACKUP",
+      "hlmon.dll",
+      "hls32svc.exe",
+      "hsmon.dll",
+      "INSTALL.LOG",
+      "nethasp.ini",
+      "nhlminst.dll",
+      "shlwapi.dll",
+      "UNWISE.EXE"
+    ]
+  },
+  "aksfridge_open": "OK",
+  "aksfridge_ioctl_hits": {},
+  "nhsrvice_pid": 4344,
+  "nhsrvice_handle": "OK",
+  "mem_total_bytes": 27635712,
+  "mem_regions": 211,
+  "mem_word_counts": {
+    "MessageBoxA": 8,
+    "argument": 8,
+    "ReadProcessMemory": 8,
+    "GetStdHandle": 8,
+    "CreateCompatibleDC": 8,
+    "DeleteDC": 8,
+    "TEMP": 8,
+    "mulSou": 8,
+    "RtlGetPersistedStateLocation": 8,
+    "MASK": 8,
+    "OPTIONS0": 8,
+    "CONTEXT0": 8,
+    "PROPOSAL0": 8,
+    "DROP0": 8,
+    "RpcBindingCreateW": 8,
+    "RpcBindingBind": 8,
+    "RegisterWaitForSingleObjectEx": 8,
+    "RtlGetDaclSecurityDescriptor": 8,
+    "RpcSsDestroyClientContext": 8,
+    "QueueUserWorkItem": 8,
+    "NtQueryObject": 8,
+    "RtlLengthSid": 8,
+    "RtlEqualSid": 8,
+    "GetModuleHandleExA": 8,
+    "HeapSize": 8,
+    "e-threadpool-legacy-l1-1-0.dll": 8,
+    "service-management-l1-1-0.dll": 8,
+    "win-service-winsvc-l1-1-0.dll": 8,
+    "RpcAsyncCancelCall": 8,
+    "LCMapStringW": 8,
+    "WaitForMultipleObjects": 8,
+    "ImpersonateSelf": 8,
+    "atoi": 8,
+    "wtol": 8,
+    "strncmp": 8,
+    "s-win-core-timezone-l1-1-0.dll": 8,
+    "PostMessageW": 8,
+    "IsWindow": 8,
+    "callnewh": 8,
+    "ReturnHr": 8,
+    "LogHr": 8,
+    "FailFast": 8,
+    "NtUpdateWnfStateData": 8,
+    "QueryServiceStatus": 8,
+    "wcstol": 8,
+    "RtlFreeAnsiString": 8,
+    "lstrcmpW": 8,
+    "PrivilegeCheck": 8,
+    "GetSecurityDescriptorLength": 8,
+    "RtlUnicodeToMultiByteN": 8,
+    "RtlCompareUnicodeString": 8,
+    "RtlEqualUnicodeString": 8,
+    "RtlGetNtSystemRoot": 8,
+    "GetDeviceCaps": 8,
+    "CreateDCW": 8,
+    "CreateDIBSection": 8,
+    "bounds": 8,
+    "path.": 8,
+    "Wow64DisableWow64FsRedirection": 8,
+    "Wow64RevertWow64FsRedirection": 8
+  },
+  "mem_samples": [
+    {
+      "word": "ApphelpDebug",
+      "vaddr": "0x1b03e0",
+      "ctx_hex": "0000000000000000000000000000000041707068656c704465627567000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004000000000000000000000200000073",
+      "ctx_printable": "................ApphelpDebug................................................................................s"
+    },
+    {
+      "word": "shimengstate",
+      "vaddr": "0x1b043c",
+      "ctx_hex": "000400000000000000000000020000007368696d656e6773746174650000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000038764900000000004f0000000000000000000000000000000200000053",
+      "ctx_printable": "................shimengstate....................................................8vI.....O...................S"
+    },
+    {
+      "word": "ShimDebugLog",
+      "vaddr": "0x1b0498",
+      "ctx_hex": "000000000000000000000000020000005368696d44656275674c6f67000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000200000000",
+      "ctx_printable": "................ShimDebugLog................................................................................."
+    },
+    {
+      "word": "QRWUj",
+      "vaddr": "0x401200",
+      "ctx_hex": "891570c84100538d4c2414568d54241c515257556a006a006a32c744243800000000c7442434f8000000e8c1ba00008b0683c42485c00f858b000000b801000000b9d8374200833900744681c1000200004081f9d84942007cec5f5e5d5b83c40cc385f6748b",
+      "ctx_printable": "..p.A.S.L$.V.T$.QRWUj.j.j2.D$8.....D$4.............$...............7B..9.tF......@...IB.|._^][......t."
+    },
+    {
+      "word": "hDWB",
+      "vaddr": "0x4085ce",
+      "ctx_hex": "00000056685c534200e8840000006a026844574200e8780000006a0468e4664200e86c000000a1384e420083c4183bc3740d8bc65f5e5d5b81c42c040000c3381d54534200743433c03898c0ba4200741266893445a0b8420066893445e0bd4200eb106689",
+      "ctx_printable": "...Vh\\SB......j.hDWB..x...j.h.fB..l....8NB....;.t..._^][..,....8.TSB.t43.8...B.t.f.4E..B.f.4E..B...f."
+    },
+    {
+      "word": "QRWh",
+      "vaddr": "0x409799",
+      "ctx_hex": "000000a1708642008d4c24148d5424185152576800020000688086420050e8427600008bf081fe000200000f87f40000006860b84200ffd581fea5000000752a57576a086a048d4c242c6a01515668e08842006880864200e8ba7effff83c424c74424103e",
+      "ctx_printable": "....p.B..L$..T$.QRWh....h..B.P.Bv................h`.B.........u*WWj.j..L$,j.QVh..B.h..B...~....$.D$.>"
+    },
+    {
+      "word": "RPSVWj",
+      "vaddr": "0x40cd77",
+      "ctx_hex": "74748d450c8d4d28508d5508518d452052505356576a006a67e80b0100008b452883c42485c0740e83f8f80f85aa000000e9b50000008b4d208d41ff83f8060f87a6000000ff248570ce4000be05000000eb58be0a000000eb51be14000000eb4abe32000000eb",
+      "ctx_printable": "tt.E..M(P.U.Q.E RPSVWj.jg......E(..$..t................M .A...........$.p.@.......X......Q......J.2...."
+    },
+    {
+      "word": "QRSVWj",
+      "vaddr": "0x40cdeb",
+      "ctx_hex": "eb358d550c8d4528528d4d08508d552051525356576a006a03c74520fdffffffe8900000008b452883c42485c075388b75086685f674428d450c8d4d28508d5508518b4d148d452052505351576a006a03c74520ffffffffe8580000008b452883c42485c0740a",
+      "ctx_printable": ".5.U..E(R.M.P.U QRSVWj.j..E ..........E(..$..u8.u.f..tB.E..M(P.U.Q.M..E RPSQWj.j..E .....X....E(..$..t."
+    },
+    {
+      "word": "RPSQWj",
+      "vaddr": "0x40ce23",
+      "ctx_hex": "450c8d4d28508d5508518b4d148d452052505351576a006a03c74520ffffffffe8580000008b452883c42485c0740a8b55245f5e5b89025dc3f6450801740233f68b45248b4d1c81e6ffff00005fc7000000000089315e5b5dc38d4900b3cd4000bacd4000c1cd",
+      "ctx_printable": "E..M(P.U.Q.M..E RPSQWj.j..E .....X....E(..$..t..U$_^[..]..E..t.3..E$.M......._.......1^[]..I...@...@..."
+    },
+    {
+      "word": "hHnB",
+      "vaddr": "0x40d28d",
+      "ctx_hex": "b6410053ffd68bf885ff0f841b01000068486e4200ff154c70410050ffd785c00f8405010000a1486e420085c00f85f80000008b450885c07406c700000000008b45f450ff15b87041005f5e33c05b8be55dc36848b64100ff15c47041008bf885ff745268",
+      "ctx_printable": ".A.S............hHnB...LpA.P...........HnB..........E...t........E.P...pA._^3.[..].hH.A....pA.....tRh"
+    },
+    {
+      "word": "PQRj",
+      "vaddr": "0x41056f",
+      "ctx_hex": "1c0000008b4c24108b54241c8d4424285051526a0057ff54243885c0745d85f6740756ff15cc7041008d4424146a00506a008d4c24346a005157ffd58b442414506a408bd8ff15d07041008bf085f6746b8d5424146a0052538d442434565057c706050000",
+      "ctx_printable": ".....L$..T$..D$(PQRj.W.T$8..t]..t.V...pA..D$.j.Pj..L$4j.QW...D$.Pj@.....pA.....tk.T$.j.RS.D$4VPW....."
+    },
+    {
+      "word": "RPQj",
+      "vaddr": "0x4107b9",
+      "ctx_hex": "8b4c24148d542424c74424241c0000005250516a0053ff54243085c00f840d0100008d5424106a00526a008d4424306a005053ffd68b442410506a4089442450ff15d07041008be885ed0f84c40000008b5424488d4c24106a0051528d442430555053c745",
+      "ctx_printable": ".L$..T$$.D$$....RPQj.S.T$0.........T$.j.Rj..D$0j.PS...D$.Pj@.D$P...pA............T$H.L$.j.QR.D$0UPS.E"
+    },
+    {
+      "word": "RPQj",
+      "vaddr": "0x410a5a",
+      "ctx_hex": "24248b7424108b068b4c241c8d5424305250516a0053ff54244085c00f84ba00000085ed740755ff15cc7041008d5424146a00526a008d44243c6a005053ff5424388b442414506a408bf0ff15d07041008be885ed0f84c70000008d4c24146a0051568d54",
+      "ctx_printable": "$$.t$....L$..T$0RPQj.S.T$@..........t.U...pA..T$.j.Rj..D$<j.PS.T$8.D$.Pj@.....pA............L$.j.QV.T"
+    },
+    {
+      "word": "ulSj",
+      "vaddr": "0x4122c1",
+      "ctx_hex": "007509836004fea198244300837808ff756c536a00ff700cffd7a198244300ff70106a00ff35a4244300ff1574714100a19c2443008b15a02443008d0480c1e0028bc8a1982443002bc88d4c11ec518d48145150e896f0ffff8b450883c40cff0d9c244300",
+      "ctx_printable": ".u..`....$C..x..ulSj..p.....$C..p.j..5.$C...tqA...$C....$C...........$C.+..L..Q.H.QP......E.......$C."
+    },
+    {
+      "word": "hhsA",
+      "vaddr": "0x413218",
+      "ctx_hex": "c9c30fb7450a23450cc9c3558bec6aff686873410068cc4b410064a100000000506489250000000083ec1c5356578965e833ff393d6c6f4200754657576a015b536864734100be000100005657ff152471410085c07408891d6c6f4200eb22575753686073",
+      "ctx_printable": "....E.#E...U..j.hhsA.h.KA.d.....Pd.%.......SVW.e.3.9=loB.uFWWj.[ShdsA......VW..$qA...t...loB..\"WWSh`s"
+    },
+    {
+      "word": "ShdsA",
+      "vaddr": "0x413248",
+      "ctx_hex": "e833ff393d6c6f4200754657576a015b536864734100be000100005657ff152471410085c07408891d6c6f4200eb2257575368607341005657ff153471410085c00f8422010000c7056c6f420002000000397d147e10ff7514ff7510e89e0100005959894514",
+      "ctx_printable": ".3.9=loB.uFWWj.[ShdsA......VW..$qA...t...loB..\"WWSh`sA.VW..4qA.....\".....loB.....9}.~..u..u......YY.E."
+    },
+    {
+      "word": "ApphelpDebug",
+      "vaddr": "0x494964",
+      "ctx_hex": "00000000f31db48d339c0008e0031b0041707068656c7044656275670000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000ff",
+      "ctx_printable": "........3.......ApphelpDebug................................................................................."
+    },
+    {
+      "word": "shimengstate",
+      "vaddr": "0x495874",
+      "ctx_hex": "00000000f31db48d699d00083c041b007368696d656e6773746174650000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff",
+      "ctx_printable": "........i...<...shimengstate................................................................................."
+    },
+    {
+      "word": "ShimDebugLog",
+      "vaddr": "0x495ccc",
+      "ctx_hex": "00000000f31db48d339c000898041b005368696d44656275674c6f670000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000ff",
+      "ctx_printable": "........3.......ShimDebugLog................................................................................."
+    },
+    {
+      "word": "ShimDebugLog",
+      "vaddr": "0x71523934",
+      "ctx_hex": "5f004c004500560045004c00000000005368696d44656275674c6f67000000007368696d656e6773746174650000000000000000f5010000040000000002000000000000714ef5ee61062d429a9882fd4940b820536462496e697444617461626173650063003a005c00000053",
+      "ctx_printable": "_.L.E.V.E.L.....ShimDebugLog....shimengstate........................qN..a.-B....I@. SdbInitDatabase.c.:.\\...S"
+    },
+    {
+      "word": "shimengstate",
+      "vaddr": "0x71523944",
+      "ctx_hex": "5368696d44656275674c6f67000000007368696d656e6773746174650000000000000000f5010000040000000002000000000000714ef5ee61062d429a9882fd4940b820536462496e697444617461626173650063003a005c0000005300490047004e002e004d004500440049",
+      "ctx_printable": "ShimDebugLog....shimengstate........................qN..a.-B....I@. SdbInitDatabase.c.:.\\...S.I.G.N...M.E.D.I"
+    },
+    {
+      "word": "ApphelpDebug",
+      "vaddr": "0x71524d58",
+      "ctx_hex": "330032002e0064006c006c000000000041707068656c7044656275670000000041707068656c700052746c556e69636f6465537472696e67546f416e7369537472696e67206661696c6564205b25785d000000004b45524e454c33322e444c4c00000000456e67696e65206e6f",
+      "ctx_printable": "3.2...d.l.l.....ApphelpDebug....Apphelp.RtlUnicodeStringToAnsiString failed [%x]....KERNEL32.DLL....Engine no"
+    }
+  ]
+}
