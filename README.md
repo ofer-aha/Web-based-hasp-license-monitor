@@ -1,8 +1,8 @@
 # hasp-license-monitor
 
-Aladdin License Monitor is a Windows-hosted Flask web application that shows, in real time, who is currently consuming one of the 10 available Bentley BenARIT license seats from an Aladdin HASP HL USB dongle.
+Aladdin License Monitor is a Windows-hosted Flask web application that shows, in real time, who is currently consuming one of the available Bentley BenARIT license seats from an Aladdin HASP HL USB dongle.
 
-It runs on `SWCOMP99`, the server that hosts the physical dongle, and exposes a Hebrew RTL web UI at `http://swcomp99:5000` for users on the local network.
+It runs on the license server host and exposes a Hebrew RTL web UI for users on the local network.
 
 ## Features
 
@@ -18,20 +18,20 @@ It runs on `SWCOMP99`, the server that hosts the physical dongle, and exposes a 
 
 The application is designed to answer a simple operational question: **who is currently using BenARIT?**
 
-The monitor queries the legacy NetHASP license manager actually serving BenARIT seats, enriches the raw session data with Windows and Active Directory identity information, and serves the results through a lightweight web interface.
+The monitor queries the legacy NetHASP license manager actually serving BenARIT seats, enriches the raw session data with Windows and Active Directory identity information, and serves the results through a browser-based dashboard.
 
 ## System Environment
 
 | Component | Details |
 |---|---|
-| License server host | `SWCOMP99` (Windows, domain `sw.local`) |
-| Domain controller | `DC01` |
-| HASP dongle | Aladdin HASP HL, Key ID `147558057` |
+| License server host | `[REDACTED]` (Windows, domain `[REDACTED]`) |
+| Domain controller | `[REDACTED]` |
+| HASP dongle | Aladdin HASP HL, Key ID `[REDACTED]` |
 | License type | NetHASP, 10 seats, Program 3 |
 | Protected software | Bentley BenARIT |
 | Web server port | `5000` |
 | Python version | 3.13 |
-| Run-as account | `SW\swadmin` |
+| Run-as account | `[REDACTED]` |
 
 ## How It Works
 
@@ -78,7 +78,7 @@ A raw HASP session contains only hostname and IP. The app resolves the user in t
    Queried from the client workstation using WMI / `quser` fallback logic.
 
 2. **Employee display name**  
-   Looked up in Active Directory on `DC01` using either:
+   Looked up in Active Directory on the domain controller using either:
    - `Get-ADUser`
    - `.NET DirectorySearcher` via LDAP
 
@@ -90,7 +90,7 @@ Each `GET /api/sessions` call performs the following:
 
 1. Run `_mfquery.exe`
 2. Parse active HASP sessions
-3. Resolve workstation login to `SW\\username`
+3. Resolve workstation login to `DOMAIN\\username`
 4. Resolve `DisplayName` from Active Directory
 5. Build the response objects
 6. Return JSON to the browser
@@ -101,9 +101,9 @@ Example response:
 [
   {
     "slot": "1",
-    "host_name": "SWCOMP117",
+    "host_name": "WORKSTATION-01",
     "ip": "10.0.0.203",
-    "domain_user": "SW\\meirav",
+    "domain_user": "DOMAIN\\meirav",
     "display_name": "Meirav Cohen",
     "status": "active"
   }
@@ -145,9 +145,9 @@ Creates a Windows Scheduled Task named `AladdinLicenseMonitor` using `schtasks`.
 |---|---|
 | Trigger | On system startup |
 | Program | `python start_server.py` |
-| Run-as | `SW\swadmin` |
+| Run-as | `[REDACTED]` |
 | Privilege | Highest |
-| Log file | `logs\service.log` |
+| Log file | `logs\\service.log` |
 
 ### `start_server.py`
 
@@ -156,7 +156,7 @@ Acts as a watchdog:
 - Starts `server.py`
 - If it crashes, waits 10 seconds
 - Restarts automatically
-- Appends stdout/stderr to `logs\service.log`
+- Appends stdout/stderr to `logs\\service.log`
 
 ### Management commands
 
@@ -214,6 +214,5 @@ pip install -r requirements.txt
 
 ---
 
-Ofer Aharon  
-`ofer@sw-eng.co.il`  
+Project contact information removed for public sharing.
 2026
