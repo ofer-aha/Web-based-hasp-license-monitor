@@ -3,7 +3,7 @@ diagnose7.py
 1. Extract string literals from hsmon.dll → find valid command names
 2. Compile 32-bit C# probe that passes arg3 as IntPtr (pointer to int)
 3. Try every extracted string + known candidates as commands
-Run on SWCOMP99: python diagnose7.py
+Run on example-host: python diagnose7.py
 """
 import os, json, re, struct, subprocess
 

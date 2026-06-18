@@ -1,6 +1,6 @@
 """
 diagnose2.py — memory scan approach for nhsrvice.exe session data
-Run on SWCOMP99: python diagnose2.py
+Run on example-host: python diagnose2.py
 Strategy: read nhsrvice.exe process memory directly (it's in Session 0,
 our process is also in Session 0 as SYSTEM with SeDebugPrivilege).
 Look for hostname patterns in the session table.

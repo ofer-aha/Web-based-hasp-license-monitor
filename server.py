@@ -1,6 +1,6 @@
 """
 Aladdin License Monitor — web interface for HASP license usage.
-Runs on SWCOMP99 (the machine hosting the HASP key).
+Runs on example-host (the machine hosting the HASP key).
 
 Queries:
   1. HASP Admin Control Center (localhost:1947) for current sessions
@@ -17,6 +17,7 @@ import subprocess
 import re
 import json
 import logging
+import os
 from flask import Flask, jsonify, render_template_string
 import requests
 from bs4 import BeautifulSoup
@@ -28,6 +29,9 @@ HASP_URL   = "http://127.0.0.1:1947"
 LISTEN_HOST = "0.0.0.0"   # accept connections from the network
 LISTEN_PORT = 5000
 LOG_LEVEL   = logging.INFO
+DEFAULT_DOMAIN = os.getenv("ALM_DEFAULT_DOMAIN", "EXAMPLE")
+AD_SERVER = os.getenv("ALM_AD_SERVER", "example-dc")
+COMPANY_SUFFIX = os.getenv("ALM_COMPANY_SUFFIX", "")
 
 # ---------------------------------------------------------------------------
 logging.basicConfig(level=LOG_LEVEL, format="%(asctime)s %(levelname)s %(message)s")
@@ -209,7 +213,7 @@ public class HaspQuery {
     int bsz = 16384;
     IntPtr buf = Marshal.AllocHGlobal(bsz);
     try {
-      string[] servers = new string[] { "127.0.0.1", "", "SWCOMP99", null };
+      string[] servers = new string[] { "127.0.0.1", "", "example-host", null };
       string[] vnames  = new string[] { "cdecl_str", "cdecl_null", "std_str", "std_null", "cdecl_str_swapped", "std_str_swapped" };
       foreach (string sv in servers) {
         string svk = sv == null ? "null" : (sv == "" ? "empty" : sv);
@@ -274,7 +278,7 @@ def _sessions_via_ordinal() -> list[dict]:
 #     → one line per active session:
 #       HS,ID=<n>,MA="<ma>",SLOT=<s>,INDEX=<i>,PROT="UDP(ip)",TIMEOUT=<t>,NAME="host"
 #
-# Confirmed: server ID=46046, MA="1", SLOT=3, users appear as NAME="SWCOMP117.sw.local"
+# Confirmed: server ID=10001, MA="1", SLOT=3, users appear as NAME="example-client.example.local"
 # ---------------------------------------------------------------------------
 
 _MIGHTYFUNC_CS = r"""
@@ -1218,7 +1222,7 @@ def get_logged_on_user(hostname: str, ip: str = "") -> str | None:
             user = out.strip().splitlines()[0].strip().lstrip(">")
             if user:
                 # quser returns just the SAMAccountName; prepend domain
-                domain_user = f"SW\\{user}" if "\\" not in user else user
+                domain_user = f"{DEFAULT_DOMAIN}\\{user}" if "\\" not in user else user
                 log.info("quser via '%s': %s", target, domain_user)
                 return domain_user
 
@@ -1248,7 +1252,7 @@ def get_logged_on_user(hostname: str, ip: str = "") -> str | None:
 def get_display_name(domain_user: str) -> str | None:
     """
     Given 'DOMAIN\\username' (or bare username), returns the AD DisplayName
-    by querying DC01 directly.  Strips the company suffix if present.
+    by querying example-dc directly.  Strips the company suffix if present.
     Falls back to the SAM account name if the AD lookup fails.
     """
     if not domain_user:
@@ -1257,20 +1261,18 @@ def get_display_name(domain_user: str) -> str | None:
     if not username:
         return None
 
-    COMPANY_SUFFIX = " -סלימאן וישאחי מהנדסים ויועצים בעמ"
-
-    # Query DC01 explicitly so the lookup works even when the AD PS module
+    # Query AD_SERVER explicitly so the lookup works even when the AD PS module
     # isn't imported on the local machine's default session path.
     cmd = (
         "$dn = $null; "
         "try { "
         "  Import-Module ActiveDirectory -ErrorAction SilentlyContinue; "
-        f"  $dn = (Get-ADUser '{username}' -Server DC01 "
+        f"  $dn = (Get-ADUser '{username}' -Server '{AD_SERVER}' "
         "    -Properties DisplayName -ErrorAction SilentlyContinue).DisplayName "
         "} catch {}; "
         "if (-not $dn) { "
         # Fallback: ADSI DirectorySearcher — works without AD module
-        f"  $s = New-Object DirectoryServices.DirectorySearcher([ADSI]'LDAP://DC01'); "
+        f"  $s = New-Object DirectoryServices.DirectorySearcher([ADSI]'LDAP://{AD_SERVER}'); "
         f"  $s.Filter = '(sAMAccountName={username})'; "
         "  $s.PropertiesToLoad.Add('displayName') | Out-Null; "
         "  $r = $s.FindOne(); "
@@ -1613,8 +1615,8 @@ HTML = r"""
   color: #888;
   direction: rtl;
 ">
-  תכנון וביצוע: עופר אהרון &copy; 2026 &nbsp;|&nbsp;
-  <a href="mailto:ofer@sw-eng.co.il" style="color:#888; text-decoration:none;">ofer@sw-eng.co.il</a>
+  תכנון וביצוע: example-name &copy; 2026 &nbsp;|&nbsp;
+  <a href="mailto:user@example.com" style="color:#888; text-decoration:none;">user@example.com</a>
 </footer>
 </body>
 </html>

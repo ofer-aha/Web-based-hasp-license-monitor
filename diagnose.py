@@ -1,6 +1,6 @@
 """
 diagnose.py — standalone HASP session diagnostic
-Run on SWCOMP99: python diagnose.py
+Run on example-host: python diagnose.py
 Outputs JSON with:
   - TCP command scan (find nhsrvice session-query command)
   - nhsrvice.exe binary strings (find IPC clues)

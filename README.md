@@ -2,7 +2,7 @@
 
 Aladdin License Monitor is a Windows-hosted Flask web application that shows, in real time, who is currently consuming one of the 10 available Bentley BenARIT license seats from an Aladdin HASP HL USB dongle.
 
-It runs on `SWCOMP99`, the server that hosts the physical dongle, and exposes a Hebrew RTL web UI at `http://swcomp99:5000` for users on the local network.
+It runs on `example-host`, the server that hosts the physical dongle, and exposes a Hebrew RTL web UI at `http://example-host:5000` for users on the local network.
 
 ## Features
 
@@ -24,14 +24,14 @@ The monitor queries the legacy NetHASP license manager actually serving BenARIT 
 
 | Component | Details |
 |---|---|
-| License server host | `SWCOMP99` (Windows, domain `sw.local`) |
-| Domain controller | `DC01` |
-| HASP dongle | Aladdin HASP HL, Key ID `147558057` |
+| License server host | `example-host` (Windows, domain `example.local`) |
+| Domain controller | `example-dc` |
+| HASP dongle | Aladdin HASP HL, Key ID `123456789` |
 | License type | NetHASP, 10 seats, Program 3 |
 | Protected software | Bentley BenARIT |
 | Web server port | `5000` |
 | Python version | 3.13 |
-| Run-as account | `SW\swadmin` |
+| Run-as account | `EXAMPLE\example-user` |
 
 ## How It Works
 
@@ -78,7 +78,7 @@ A raw HASP session contains only hostname and IP. The app resolves the user in t
    Queried from the client workstation using WMI / `quser` fallback logic.
 
 2. **Employee display name**  
-   Looked up in Active Directory on `DC01` using either:
+   Looked up in Active Directory on `example-dc` using either:
    - `Get-ADUser`
    - `.NET DirectorySearcher` via LDAP
 
@@ -101,10 +101,10 @@ Example response:
 [
   {
     "slot": "1",
-    "host_name": "SWCOMP117",
-    "ip": "10.0.0.203",
-    "domain_user": "SW\\meirav",
-    "display_name": "Meirav Cohen",
+    "host_name": "example-client",
+    "ip": "198.51.100.203",
+    "domain_user": "EXAMPLE\\example-user",
+    "display_name": "Example Name",
     "status": "active"
   }
 ]
@@ -145,7 +145,7 @@ Creates a Windows Scheduled Task named `AladdinLicenseMonitor` using `schtasks`.
 |---|---|
 | Trigger | On system startup |
 | Program | `python start_server.py` |
-| Run-as | `SW\swadmin` |
+| Run-as | `EXAMPLE\example-user` |
 | Privilege | Highest |
 | Log file | `logs\service.log` |
 
@@ -198,6 +198,12 @@ Install Python dependencies with:
 pip install -r requirements.txt
 ```
 
+Optional environment overrides for local deployment:
+
+- `ALM_DEFAULT_DOMAIN` (default: `EXAMPLE`)
+- `ALM_AD_SERVER` (default: `example-dc`)
+- `ALM_COMPANY_SUFFIX` (default: empty)
+
 ## Known Limitations
 
 - Session refresh can take **5-8 seconds** because `SCAN SERVERS` is asynchronous and requires polling
@@ -214,6 +220,6 @@ pip install -r requirements.txt
 
 ---
 
-Ofer Aharon  
-`ofer@sw-eng.co.il`  
+Example Name  
+`user@example.com`  
 2026

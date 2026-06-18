@@ -1,6 +1,6 @@
 """
 diagnose8.py — call the EXACT hsmon.dll commands to get active HASP logins
-Run on SWCOMP99: python diagnose8.py
+Run on example-host: python diagnose8.py
 """
 import os, json, re, subprocess
 
@@ -85,8 +85,8 @@ class Probe8 {
         Console.WriteLine("=== GET SERVERS ===");
         string svr = Call("GET SERVERS");
 
-        // Parse server IDs from response like: HS,ID=147558057,...\r\nHS,ID=...
-        // and also try known ID 147558057 directly
+        // Parse server IDs from response like: HS,ID=123456789,...\r\nHS,ID=...
+        // and also try known ID 123456789 directly
         var ids = new System.Collections.Generic.List<int>();
         foreach (System.Text.RegularExpressions.Match m in
             System.Text.RegularExpressions.Regex.Matches(svr, @"ID=(\d+)"))
@@ -96,7 +96,7 @@ class Probe8 {
                 ids.Add(id);
         }
         // Also try the known HASP HL Net key ID
-        if (!ids.Contains(147558057)) ids.Add(147558057);
+        if (!ids.Contains(123456789)) ids.Add(123456789);
         // And try 0 / small values in case ID is different
         foreach (int x in new[]{0,1,2,3,4,5}) if(!ids.Contains(x)) ids.Add(x);
 

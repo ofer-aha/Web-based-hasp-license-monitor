@@ -1,6 +1,6 @@
 """
 diagnose4.py — probe hlmon.dll and hsmon.dll (the actual monitor DLLs)
-Run on SWCOMP99: python diagnose4.py
+Run on example-host: python diagnose4.py
 """
 import os, json, struct, subprocess, re
 
@@ -148,7 +148,7 @@ public class MonCall {{
 $buf = [System.Runtime.InteropServices.Marshal]::AllocHGlobal(4096)
 [System.Runtime.InteropServices.Marshal]::Copy([byte[]]::new(4096), 0, $buf, 4096)
 $results = @()
-foreach ($sv in @("127.0.0.1", "SWCOMP99", "", "localhost")) {{
+foreach ($sv in @("127.0.0.1", "example-host", "", "localhost")) {{
   try {{ $r=[MonCall]::Call_C0(); $b=[byte[]]::new(64); [System.Runtime.InteropServices.Marshal]::Copy($buf,0,$b,0,64); $results += "C0_ret="+$r+" "+[BitConverter]::ToString($b).Replace('-','') }} catch {{}}
   try {{ $r=[MonCall]::Call_S0(); $b=[byte[]]::new(64); [System.Runtime.InteropServices.Marshal]::Copy($buf,0,$b,0,64); $results += "S0_ret="+$r+" "+[BitConverter]::ToString($b).Replace('-','') }} catch {{}}
   try {{ $r=[MonCall]::Call_C1($buf,4096); $b=[byte[]]::new(64); [System.Runtime.InteropServices.Marshal]::Copy($buf,0,$b,0,64); $results += "C1_ret="+$r+" sv=$sv "+[BitConverter]::ToString($b).Replace('-','') }} catch {{}}

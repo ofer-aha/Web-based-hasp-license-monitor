@@ -1,6 +1,6 @@
 """
 diagnose5.py — call mightyfunc correctly + extract .hlp strings
-Run on SWCOMP99: python diagnose5.py
+Run on example-host: python diagnose5.py
 """
 import os, json, subprocess, re, struct
 
@@ -103,7 +103,7 @@ if ($h -ne 0 -and $h -ne [IntPtr]::Zero) {
         Write-Host "${label}: ret=$ret hex=$hex asc=$asc"
     }
 
-    foreach ($sv in @('127.0.0.1', 'SWCOMP99', 'localhost', '')) {
+    foreach ($sv in @('127.0.0.1', 'example-host', 'localhost', '')) {
         [System.Runtime.InteropServices.Marshal]::Copy([byte[]]::new(8192), 0, $buf, 8192)
         foreach ($a in @(0, 1, 2, 3, 5, 10)) {
             try {

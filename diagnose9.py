@@ -1,6 +1,6 @@
 """
 diagnose9.py — same as diagnose8 but waits for SCAN SERVERS to finish
-Run on SWCOMP99: python diagnose9.py
+Run on example-host: python diagnose9.py
 """
 import os, json, subprocess
 
@@ -93,7 +93,7 @@ class Probe9 {
             if (long.TryParse(m.Groups[1].Value, out id) && !ids.Contains(id))
                 ids.Add(id);
         }
-        if (!ids.Contains(147558057L)) ids.Add(147558057L);
+        if (!ids.Contains(123456789L)) ids.Add(123456789L);
 
         Console.WriteLine("Server IDs: " + string.Join(", ", ids));
         Console.WriteLine();

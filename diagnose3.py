@@ -1,6 +1,6 @@
 """
 diagnose3.py — elevated memory scan + AksFridge IOCTL sweep
-Run on SWCOMP99: python diagnose3.py
+Run on example-host: python diagnose3.py
 """
 import ctypes, ctypes.wintypes, struct, re, os, json, subprocess, socket
 

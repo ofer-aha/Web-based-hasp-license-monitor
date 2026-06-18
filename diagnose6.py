@@ -1,6 +1,6 @@
 """
 diagnose6.py — disassemble mightyfunc + compile 32-bit C# probe
-Run on SWCOMP99: python diagnose6.py
+Run on example-host: python diagnose6.py
 """
 import os, json, struct, re, subprocess, tempfile
 
@@ -179,7 +179,7 @@ class Probe {
             Console.WriteLine("mightyfunc=" + (long)pfn);
             if(pfn == IntPtr.Zero) continue;
             IntPtr buf = Marshal.AllocHGlobal(8192);
-            foreach(string sv in new[]{"127.0.0.1","SWCOMP99",""}) {
+            foreach(string sv in new[]{"127.0.0.1","example-host",""}) {
                 foreach(int a1 in new[]{0,1,2,3,5,10}) {
                     foreach(int a2 in new[]{0,1,2,3}) {
                         Run(pfn, buf, sv, a1, a2);
